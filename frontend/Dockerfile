@@ -5,5 +5,6 @@ ENV APP_ROOT /web
 WORKDIR ${APP_ROOT}
 ADD ./app/ ${APP_ROOT}
 
+RUN yarn install
 RUN yarn build
 CMD yarn run start
