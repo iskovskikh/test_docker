@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  frontend:
+    image: goooodmafia/frontend
+    container_name: frontend_app
+#    ports:
+#      - "3000:3000"
+    expose:
+      - "3000"
+
+  web:
+    container_name: web_app
+    image: nginx:1.19.8
+    volumes:
+      - ./nginx:/etc/nginx/templates
+      - ./logs:/var/log/nginx/
+      - ./static:/var/www/static
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - NGINX_HOST=localhost
+      - NGINX_PORT=80
+
+
